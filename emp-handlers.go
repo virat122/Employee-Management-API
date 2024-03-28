@@ -9,6 +9,12 @@ import (
 
 func CreateEmployee(w http.ResponseWriter, r *http.Request) {
 
+	if r.Method != "POST" {
+		w.WriteHeader(http.StatusMethodNotAllowed)
+		return
+
+	}
+
 	w.Header().Set("Content-Type", "application/json")
 	var emp Employee
 
@@ -19,6 +25,12 @@ func CreateEmployee(w http.ResponseWriter, r *http.Request) {
 }
 
 func GetEmplyees(w http.ResponseWriter, r *http.Request) {
+	// check if request type
+	if r.Method != "GET" {
+		w.WriteHeader(http.StatusMethodNotAllowed)
+		return
+	}
+
 	w.Header().Set("Content-Type", "application/json")
 	var emps []Employee
 	Database.Find(&emps)
@@ -26,9 +38,13 @@ func GetEmplyees(w http.ResponseWriter, r *http.Request) {
 
 }
 
-// niche kam baki  h       abhi
-
 func GetEmplyeeByID(w http.ResponseWriter, r *http.Request) {
+
+	if r.Method != "GET" {
+		w.WriteHeader(http.StatusMethodNotAllowed)
+		return
+	}
+
 	w.Header().Set("Content-Type", "applicatio/json")
 
 	var employee Employee
@@ -37,6 +53,10 @@ func GetEmplyeeByID(w http.ResponseWriter, r *http.Request) {
 
 }
 func UpdateEmployee(w http.ResponseWriter, r *http.Request) {
+	if r.Method != "PUT" {
+		w.WriteHeader(http.StatusMethodNotAllowed)
+		return
+	}
 	w.Header().Set("Content-Type", "applicatio/json")
 
 	var employee Employee
@@ -47,6 +67,11 @@ func UpdateEmployee(w http.ResponseWriter, r *http.Request) {
 	json.NewEncoder(w).Encode(employee)
 }
 func DeleteEmployee(w http.ResponseWriter, r *http.Request) {
+
+	if r.Method != "DELETE" {
+		w.WriteHeader(http.StatusMethodNotAllowed)
+		return
+	}
 	w.Header().Set("Content-Type", "application/json")
 	var emp Employee
 
