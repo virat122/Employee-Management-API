@@ -10,7 +10,7 @@ import (
 func CreateEmployee(w http.ResponseWriter, r *http.Request) {
 
 	if r.Method != "POST" {
-		w.WriteHeader(http.StatusMethodNotAllowed)
+		w.WriteHeader(http.StatusMethodNotAllowed) // give the acknoledgement that request is bad
 		return
 
 	}
@@ -27,7 +27,7 @@ func CreateEmployee(w http.ResponseWriter, r *http.Request) {
 func GetEmplyees(w http.ResponseWriter, r *http.Request) {
 	// check if request type
 	if r.Method != "GET" {
-		w.WriteHeader(http.StatusMethodNotAllowed)
+		w.WriteHeader(http.StatusMethodNotAllowed) // give the acknoledgement that request is bad
 		return
 	}
 
@@ -41,7 +41,7 @@ func GetEmplyees(w http.ResponseWriter, r *http.Request) {
 func GetEmplyeeByID(w http.ResponseWriter, r *http.Request) {
 
 	if r.Method != "GET" {
-		w.WriteHeader(http.StatusMethodNotAllowed)
+		w.WriteHeader(http.StatusMethodNotAllowed) // give the acknoledgement that request is bad
 		return
 	}
 
@@ -54,7 +54,7 @@ func GetEmplyeeByID(w http.ResponseWriter, r *http.Request) {
 }
 func UpdateEmployee(w http.ResponseWriter, r *http.Request) {
 	if r.Method != "PUT" {
-		w.WriteHeader(http.StatusMethodNotAllowed)
+		w.WriteHeader(http.StatusMethodNotAllowed) // give the acknoledgement that request is bad
 		return
 	}
 	w.Header().Set("Content-Type", "applicatio/json")
@@ -69,7 +69,7 @@ func UpdateEmployee(w http.ResponseWriter, r *http.Request) {
 func DeleteEmployee(w http.ResponseWriter, r *http.Request) {
 
 	if r.Method != "DELETE" {
-		w.WriteHeader(http.StatusMethodNotAllowed)
+		w.WriteHeader(http.StatusMethodNotAllowed) // give the acknoledgement that request is bad
 		return
 	}
 	w.Header().Set("Content-Type", "application/json")
